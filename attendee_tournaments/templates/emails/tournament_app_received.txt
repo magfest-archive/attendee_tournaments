@@ -1,0 +1,5 @@
+{{ app.first_name }},
+
+Thanks for offering to run a tournament at this coming {{ c.EVENT_NAME }}.  We'll let you know as we finalize our schedule whether your application is accepted, and if so then when the tournament you've volunteered to help run will occur.
+
+{{ c.ART_EMAIL_SIGNATURE }}

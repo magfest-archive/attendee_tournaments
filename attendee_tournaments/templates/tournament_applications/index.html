@@ -3,6 +3,118 @@
 
 <h2>MAGFest Attendee-Run Tournament Application</h2>
 
+<form method="post" action="index" class="form-horizontal" role="form">
+    {% csrf_token %}
 
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Your First Name:</label>
+        <div class="col-sm-6">
+            <input class="form-control focus" type="text" name="first_name" value="{{ app.first_name }}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Your Last Name:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="last_name" value="{{ app.last_name }}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Your Email Address:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="email" value="{{ app.email }}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Your Cellphone Number:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="cellphone" value="{{ app.cellphone }}" />
+            <p class="help-block">
+                This is optional, but it's SUPER helpful in case of an emergency during the event.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Game Title:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="game" value="{{ app.game }}" />
+            <p class="help-text">
+                Please be specific with the type of console if it's a multi-platform game.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Your Availability:</label>
+        <div class="col-sm-6">
+            {{ c.EVENT_NAME }} runs {{ c.EPOCH|datetime:"%a %b %d, %Y" }} through {{ c.ESCHATON|datetime:"%a %b %d, %Y" }}.
+            What days/times would you be available to run your tournament?
+            {% checkgroup app.availability %}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Tournament Format:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="format" value="{{ app.format }}" />
+            <p class="help-block">
+                Briefly describe the format for the tournament to give us an idea of what you want to do.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Past Experience:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="experience" value="{{ app.experience }}" />
+            <p class="help-block">
+                Have you ever run a tournament before? If so, where and when?
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Needs:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="needs" value="{{ app.needs }}" />
+            <p class="help-block">
+                What do you need to run this tournament? What can you provide?
+                {{ c.EVENT_NAME }} can typically provide a screen and system, but we may not have the game or specialty equipment.
+                As a general rule, the more equipment you can provide, the better.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Why?</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" name="why" value="{{ app.why }}" />
+            <p class="help-block">
+                Tell us why your tournament would make MAGFest, nay, THE WORLD, more radical!
+                We will also accept responses about why your tournament is tubular, groovy, or outrageous.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Volunteering:</label>
+        <div class="col-sm-6">
+            {% checkbox app.volunteering %} I'm interested in helping to staff other Attendee Run Tournaments
+            <p class="help-block">
+                Basically, are you interested in helping to run other tournaments outside of your own?
+                Duties include helping other tournament runners get checked in, get set up, and crowd control during the tournament.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+            <button type="submit" class="btn btn-primary">Upload Application</button>
+        </div>
+    </div>
+</form>
 
 {% endblock %}
