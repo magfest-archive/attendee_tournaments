@@ -36,4 +36,3 @@ class AttendeeTournament(MagModel):
             Attendee.last_name == self.last_name.title(),
             func.lower(Attendee.email) == self.email.lower()
         ).first()
-

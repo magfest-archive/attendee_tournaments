@@ -10,4 +10,3 @@ AutomatedEmail(AttendeeTournament, 'Your tournament application has been approve
 
 AutomatedEmail(AttendeeTournament, 'Your tournament application has been declined', 'tournament_app_declined.txt',
                lambda app: app.status == c.DECLINED)
-
