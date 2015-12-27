@@ -1,0 +1,111 @@
+{% extends "tournament_applications/base.html" %}
+{% block body %}
+
+<style type="text/css">
+    .col-sm-6 {
+        margin-top: 7px;
+        font-family: Courier;
+    }
+</style>
+
+<h2>{{ app.game }}</h2>
+
+<form method="post" action="app" class="form-horizontal" role="form">
+    <input type="hidden" name="id" value="{{ app.id }}" />
+    {% csrf_token %}
+
+    {% if c.status != c.NEW %}
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Application Status:</label>
+            <div class="col-sm-6">
+                <b>{{ app.status_label }}</b>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Applicant Name:</label>
+        <div class="col-sm-6">
+            {{ app.full_name }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Applicant Email:</label>
+        <div class="col-sm-6">
+            {{ app.email }}
+        </div>
+    </div>
+
+    {% if app.cellphone %}
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Applicant Phone:</label>
+            <div class="col-sm-6">
+                {{ app.cellphone }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Availability:</label>
+        <div class="col-sm-6">
+            {{ app.availability_labels|join:"<br/>" }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Tournament Format:</label>
+        <div class="col-sm-6">
+            {{ app.format }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Past Experience:</label>
+        <div class="col-sm-6">
+            {{ app.experience }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Needs:</label>
+        <div class="col-sm-6">
+            {{ app.needs }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Why?</label>
+        <div class="col-sm-6">
+            {{ app.why }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Volunteering:</label>
+        <div class="col-sm-6">
+            {{ app.volunteering|yesno:"This applicant is willing to help run other tournaments,This applicant wants to only run this tournament" }}
+        </div>
+    </div>
+
+    {% if app.status == c.NEW %}
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Accept or Decline:</label>
+            <div class="col-sm-6">
+                <select class="form-control" name="status">
+                    <option value="{{ c.NEW }}">Select whether to accept or decline</option>
+                    <option value="{{ c.ACCEPTED }}">Accept</option>
+                    <option value="{{ c.DECLINED }}">Decline</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-3">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    {% endif %}
+</form>
+
+{% endblock %}

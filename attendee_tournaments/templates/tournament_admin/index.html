@@ -1,0 +1,42 @@
+{% extends "tournament_applications/base.html" %}
+{% block body %}
+
+<script>
+    var toggleDisplay = function () {
+        $(':checkbox.status').each(function (i, checkbox) {
+            setVisible('tr.' + $(checkbox).attr('id'), $(checkbox).prop('checked'));
+        });
+    };
+</script>
+
+<h2>Console Tournament Applications</h2>
+
+{% for status, desc in c.TOURNAMENT_STATUS_OPTS %}
+    <input type="checkbox" id="app-{{ status }}" class="status" onClick="toggleDisplay()" checked /> Show {{ desc }} Applications <br/>
+{% endfor %}
+<br/>
+
+<table style="width:100%" class="datatable" data-page-length="-1">
+<thead>
+    <tr>
+        <th>Game</th>
+        <th>Applicant</th>
+        <th>Format</th>
+        <th>Experience</th>
+        <th>Status</th>
+    </tr>
+</thead>
+<tbody>
+{% for app in applications %}
+    <tr class="app-{{ app.status }}">
+        <td><a href="app?id={{ app.id }}">{{ app.game }}</a></td>
+        <td>{{ app.full_name }}</td>
+        <td>{{ app.format }}</td>
+        <td>{{ app.experience }}</td>
+        <td>{{ app.status_label }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

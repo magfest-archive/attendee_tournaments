@@ -1,0 +1,9 @@
+{{ app.first_name }},
+
+Thanks again for offering to run a tournament at this coming {{ c.EVENT_NAME }}.  We've accepted your application to run this tournament, and we'll be in touch about your timeslot based on the available times you communicated in your application.
+
+{% if app.matching_attendee and app.matching_attendee.paid_for_badge %}Since you've already registered and paid for your application, we'll be refunding your registration in exchange for your offer to run this tournament.  If you do NOT want this refund to be issued to the credit card which originally paid for your registration, please let us know ASAP so that we can make arrangements to write you a check instead.
+
+{% elif not app.matching_attendee %}Since you are not already registered in our system, we will be creating a complementary badge for you in exchange for you running this tournament.  If this is in error and you are indeed already in our system (perhaps under a different name or email address) please let us know ASAP so that we can avoid creating a duplicate registration for you.
+
+{% endif %}{{ c.ART_EMAIL_SIGNATURE }}

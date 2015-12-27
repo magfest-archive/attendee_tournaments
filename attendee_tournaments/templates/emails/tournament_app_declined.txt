@@ -1,0 +1,5 @@
+{{ app.first_name }},
+
+Thanks again for offering to run a tournament at this coming {{ c.EVENT_NAME }}.  Unfortunately, due to schedule constraints we couldn't find room in the schedule for your tournament.  We hope you have a great time this coming {{ c.EVENT_NAME }} and we look forward to seeing you there.
+
+{{ c.ART_EMAIL_SIGNATURE }}
