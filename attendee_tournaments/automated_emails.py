@@ -1,6 +1,6 @@
 from attendee_tournaments import *
 
-AutomatedEmail.extra_models[AttendeeTournament] = lambda session: session.query(AttendeeTournament).all()
+AutomatedEmail.queries[AttendeeTournament] = lambda session: session.query(AttendeeTournament).all()
 
 AutomatedEmail(AttendeeTournament, 'Your tournament application has been received', 'tournament_app_received.txt',
                lambda app: app.status == c.NEW)
