@@ -4,7 +4,7 @@
 <h2>MAGFest Attendee-Run Console Tournament Application</h2>
 
 <form method="post" action="index" class="form-horizontal" role="form">
-    {{ csrf_token() }}
+    {% csrf_token %}
 
     <div class="form-group">
         <label class="col-sm-3 control-label">Your First Name:</label>
