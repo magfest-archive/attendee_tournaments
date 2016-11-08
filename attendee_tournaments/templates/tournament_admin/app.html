@@ -12,7 +12,7 @@
 
 <form method="post" action="app" class="form-horizontal" role="form">
     <input type="hidden" name="id" value="{{ app.id }}" />
-    {{ csrf_token() }}
+    {% csrf_token %}
 
     {% if c.status != c.NEW %}
         <div class="form-group">
