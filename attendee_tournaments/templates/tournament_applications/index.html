@@ -52,7 +52,7 @@
         <div class="col-sm-6">
             {{ c.EVENT_NAME }} runs {{ c.EPOCH|datetime("%a %b %d, %Y") }} through {{ c.ESCHATON|datetime("%a %b %d, %Y") }}.
             What days/times would you be available to run your tournament?
-            {{ app.html_checkgroup('availability') }}
+            {{ macros.checkgroup(app, 'availability') }}
         </div>
     </div>
 
