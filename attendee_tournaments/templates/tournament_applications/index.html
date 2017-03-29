@@ -4,7 +4,7 @@
 <h2>MAGFest Attendee-Run Console Tournament Application</h2>
 
 <form method="post" action="index" class="form-horizontal" role="form">
-    {% csrf_token %}
+    {{ csrf_token() }}
 
     <div class="form-group">
         <label class="col-sm-3 control-label">Your First Name:</label>
@@ -50,9 +50,9 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">Your Availability:</label>
         <div class="col-sm-6">
-            {{ c.EVENT_NAME }} runs {{ c.EPOCH|datetime:"%a %b %d, %Y" }} through {{ c.ESCHATON|datetime:"%a %b %d, %Y" }}.
+            {{ c.EVENT_NAME }} runs {{ c.EPOCH|datetime_local("%a %b %d, %Y") }} through {{ c.ESCHATON|datetime_local("%a %b %d, %Y") }}.
             What days/times would you be available to run your tournament?
-            {% checkgroup app.availability %}
+            {{ macros.checkgroup(app, 'availability') }}
         </div>
     </div>
 
@@ -102,7 +102,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">Volunteering:</label>
         <div class="col-sm-6">
-            {% checkbox app.volunteering %} I'm interested in helping to staff other Attendee Run Tournaments
+            {{ macros.checkbox(app, 'volunteering') }} I'm interested in helping to staff other Attendee Run Tournaments
             <p class="help-block">
                 Basically, are you interested in helping to run other tournaments outside of your own?
                 Duties include helping other tournament runners get checked in, get set up, and crowd control during the tournament.

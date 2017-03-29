@@ -12,7 +12,7 @@
 
 <form method="post" action="app" class="form-horizontal" role="form">
     <input type="hidden" name="id" value="{{ app.id }}" />
-    {% csrf_token %}
+    {{ csrf_token() }}
 
     {% if c.status != c.NEW %}
         <div class="form-group">
@@ -49,7 +49,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">Availability:</label>
         <div class="col-sm-6">
-            {{ app.availability_labels|join:"<br/>" }}
+            {{ app.availability_labels|join("<br/>") }}
         </div>
     </div>
 
@@ -84,7 +84,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">Volunteering:</label>
         <div class="col-sm-6">
-            {{ app.volunteering|yesno:"This applicant is willing to help run other tournaments,This applicant wants to only run this tournament" }}
+            {{ app.volunteering|yesno("This applicant is willing to help run other tournaments,This applicant wants to only run this tournament") }}
         </div>
     </div>
 
